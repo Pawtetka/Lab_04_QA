@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "fcce3c7b-4541-4c72-8c5e-cdcf462835b0",
+		"name": "Lab4_Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search cocktail by name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Margarita\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita",
+					"host": [
+						"www",
+						"thecocktaildb",
+						"com"
+					],
+					"path": [
+						"api",
+						"json",
+						"v1",
+						"1",
+						"search.php"
+					],
+					"query": [
+						{
+							"key": "s",
+							"value": "margarita"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search cocktail info by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Margarita\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Finded id is right\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.drinks[0].idDrink).to.eql(\"11007\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007",
+					"host": [
+						"www",
+						"thecocktaildb",
+						"com"
+					],
+					"path": [
+						"api",
+						"json",
+						"v1",
+						"1",
+						"lookup.php"
+					],
+					"query": [
+						{
+							"key": "i",
+							"value": "11007"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the random cocktail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Drinks length is 1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.drinks.length).to.eql(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "www.thecocktaildb.com/api/json/v1/1/random.php",
+					"host": [
+						"www",
+						"thecocktaildb",
+						"com"
+					],
+					"path": [
+						"api",
+						"json",
+						"v1",
+						"1",
+						"random.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search ingredient by name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Vodka\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "www.thecocktaildb.com/api/json/v1/1/search.php?i=vodka",
+					"host": [
+						"www",
+						"thecocktaildb",
+						"com"
+					],
+					"path": [
+						"api",
+						"json",
+						"v1",
+						"1",
+						"search.php"
+					],
+					"query": [
+						{
+							"key": "i",
+							"value": "vodka"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
